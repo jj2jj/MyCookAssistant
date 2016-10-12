@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical" >
 
     <FrameLayout
@@ -12,7 +12,6 @@
             android:id="@+id/vp"
             android:layout_width="match_parent"
             android:layout_height="210dp" />
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,17 +66,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/tv_pre"
-                    android:text="阿宅的"
+                    android:text="ZHANGJJ"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
-
                 <TextView
                     android:id="@+id/tv_topic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tv_topic_from"
-                    android:text="“我想知道令狐安和令计划有什么关系？”"
+                    android:text="xxxxxxxxxxxxxxxxxxxxxxxxxxx*************"
                     android:textColor="@color/white"
                     android:textSize="12sp" />
             </RelativeLayout>

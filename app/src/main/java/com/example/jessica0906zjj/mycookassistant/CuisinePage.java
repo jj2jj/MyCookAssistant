@@ -10,11 +10,11 @@ import android.view.ViewGroup;
 /**
  * Created by Jessica0906zjj on 2016-10-10.
  */
-public class FragmentPage2 extends Fragment {
+public class CuisinePage extends Fragment {
              @Override
              public View onCreateView(LayoutInflater inflater,
                                       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-                     return inflater.inflate(R.layout.fragment2, null);
+                     return inflater.inflate(R.layout.fragment4, null);
                 }
 
              }

@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 /**
  * Created by Jessica0906zjj on 2016-10-10.
  */
-public class FragmentPage3 extends Fragment {
+public class MyCollectionPage extends Fragment {
              @Override
              public View onCreateView(LayoutInflater inflater,
                                       @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
