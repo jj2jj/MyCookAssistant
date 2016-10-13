@@ -1,5 +1,6 @@
 package com.example.jessica0906zjj.mycookassistant;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -12,14 +13,25 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mikepenz.iconics.typeface.FontAwesome;
+import com.mikepenz.materialdrawer.Drawer;
+import com.mikepenz.materialdrawer.model.DividerDrawerItem;
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
+import com.mikepenz.materialdrawer.model.SectionDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.Badgeable;
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.Nameable;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -40,7 +52,8 @@ import java.util.concurrent.TimeUnit;
  */
 
 public class HomePageFragment extends Fragment {
-    private Toolbar toolbar;
+   private Toolbar toolbar;
+   private Drawer.Result drawerResult = null;
 
     public static String IMAGE_CACHE_PATH = "imageloader/Cache"; // 图片缓存路径
 
@@ -81,28 +94,99 @@ public class HomePageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_cookbook, null);
+        //初始化toolbar
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         //设置导航图标要在setSupportActionBar方法之后
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.menu);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);//给左上角图标的左边加上一个返回的图标
+        //toolbar.setNavigationIcon(R.drawable.menu);
+//        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                switch (item.getItemId()) {
+//                    case R.id.action_add:
+//                        Toast.makeText(getContext(), "Add !", Toast.LENGTH_SHORT).show();
+//                        break;
+//                }
+//                return true;
+//            }
+//        });
+        //初始化 Navigation Drawer
+        drawerResult = new Drawer()
+                .withActivity(getActivity())
+                .withToolbar(toolbar)
+                .withActionBarDrawerToggle(true)
+                .withHeader(R.layout.drawer_header)
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_home).withIcon(FontAwesome.Icon.faw_home).withBadge("99").withIdentifier(1),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_free_play).withIcon(FontAwesome.Icon.faw_gamepad),
+                        new PrimaryDrawerItem().withName(R.string.drawer_item_custom).withIcon(FontAwesome.Icon.faw_eye).withBadge("6").withIdentifier(2),
+                        new SectionDrawerItem().withName(R.string.drawer_item_settings),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_help).withIcon(FontAwesome.Icon.faw_cog),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_open_source).withIcon(FontAwesome.Icon.faw_question).setEnabled(false),
+                        new DividerDrawerItem(),
+                        new SecondaryDrawerItem().withName(R.string.drawer_item_contact).withIcon(FontAwesome.Icon.faw_github).withBadge("12+").withIdentifier(1)
+                )
+                .withOnDrawerListener(new Drawer.OnDrawerListener() {
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+                        //打开 navigation Drawer隐藏键盘
+                        InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
+                    }
 
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.action_add:
-                        Toast.makeText(getContext(), "Add !", Toast.LENGTH_SHORT).show();
-                        break;
-                }
-                return true;
-            }
-        });
+                    @Override
+                    public void onDrawerClosed(View drawerView) {
+                    }
+                })
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    @Override
+                    // 处理集合
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
+                        if (drawerItem instanceof Nameable) {
+                            Toast.makeText(getContext(), getContext().getString(((Nameable) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
+                        }
+                        if (drawerItem instanceof Badgeable) {
+                            Badgeable badgeable = (Badgeable) drawerItem;
+                            if (badgeable.getBadge() != null) {
+                                // 如果有 "+"，不要这样处理
+                                try {
+                                    int badge = Integer.valueOf(badgeable.getBadge());
+                                    if (badge > 0) {
+                                        drawerResult.updateBadge(String.valueOf(badge - 1), position);
+                                    }
+                                } catch (Exception e) {
+                                    Log.d("test", "Не нажимайте на бейдж, содержащий плюс! :)");
+                                }
+                            }
+                        }
+                    }
+                })
+                .withOnDrawerItemLongClickListener(new Drawer.OnDrawerItemLongClickListener() {
+                    @Override
+                    // 事件处理
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id, IDrawerItem drawerItem) {
+                        if (drawerItem instanceof SecondaryDrawerItem) {
+                            Toast.makeText(getContext(), getContext().getString(((SecondaryDrawerItem) drawerItem).getNameRes()), Toast.LENGTH_SHORT).show();
+                        }
+                        return false;
+                    }
+                })
+                .build();
         initAdData();//初始化广告数据
         startAd();//开始图片轮播
         Log.i("cuowu","onCreateView");
         return view;
     }
 
+//    @Override
+//    public void onBackPressed() {
+//        // close the navigation system Drawer pressed button "back" if it was open
+//        if (drawerResult.isDrawerOpen()) {
+//            drawerResult.closeDrawer();
+//        } else {
+//            super.onBackPressed();
+//        }
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -126,6 +210,23 @@ public class HomePageFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+
+                    // handle back button
+
+                    return true;
+
+                }
+
+                return false;
+            }
+        });
         Log.i("cuowu","onResume");
     }
 

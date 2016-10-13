@@ -24,7 +24,7 @@ public class CookBookActivity extends ActionBarActivity {
             R.drawable.bt_self_selector
     };
     private Class fragmentArray[] = {HomePageFragment.class, MyProductPage.class,
-            MyCollectionPage.class, CuisinePage.class,};
+            MyCollectionPage.class, CuisinePage.class,MyInformationPage.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
