@@ -84,7 +84,7 @@ public class HomePageFragment extends Fragment {
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         //设置导航图标要在setSupportActionBar方法之后
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.self_nor);
+        toolbar.setNavigationIcon(R.drawable.menu);
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

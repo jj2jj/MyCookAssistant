@@ -28,4 +28,5 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     testCompile 'junit:junit:4.12'
     compile files('libs/universal-image-loader-1.8.6-with-sources.jar')
+    //compile 'br.com.liveo:navigationdrawer-material:1.0.3'
 }

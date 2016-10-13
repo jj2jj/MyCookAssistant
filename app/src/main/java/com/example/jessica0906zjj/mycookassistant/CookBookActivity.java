@@ -14,16 +14,17 @@ public class CookBookActivity extends ActionBarActivity {
     TextView textView;
 
     private FragmentTabHost fragmentTabHost;
-    private String texts[] = {"首页", "作品", "收藏", "菜谱分类"};
+    private String texts[] = {"首页", "作品", "收藏", "菜谱分类","我"};
 
     private int imageButton[] = {
             R.drawable.bt_home_selector,
             R.drawable.bt_product_selector,
             R.drawable.bt_heart_selector,
-            R.drawable.bt_selfinfo_selector
+            R.drawable.bt_cookbook_selector,
+            R.drawable.bt_self_selector
     };
     private Class fragmentArray[] = {HomePageFragment.class, MyProductPage.class,
-            MyCollectionPage.class, CuisinePage.class};
+            MyCollectionPage.class, CuisinePage.class,};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
