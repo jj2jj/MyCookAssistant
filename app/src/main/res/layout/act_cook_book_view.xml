@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <include layout="@layout/toolbar"/>
+
+    <com.example.jessica0906zjj.mycookassistant.widget.UnScrollViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:paddingBottom="40dp"/>
+
+    <!--底层菜单-->
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <RadioButton
+            android:id="@+id/main_page"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@drawable/bt_home_selector"
+            android:gravity="center"
+            android:text="@string/main_page"
+            android:textColor="@color/tab_selector"/>
+
+        <RadioButton
+            android:id="@+id/works"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bt_product_selector"
+            android:gravity="center"
+            android:text="@string/works"
+            android:textColor="@color/tab_selector"/>
+
+        <RadioButton
+            android:id="@+id/collect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bt_heart_selector"
+            android:gravity="center"
+            android:text="@string/collect"
+            android:textColor="@color/tab_selector"/>
+
+        <RadioButton
+            android:id="@+id/classification"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bt_cook_book_selector"
+            android:gravity="center"
+            android:text="@string/classification"
+            android:textColor="@color/tab_selector"/>
+
+        <RadioButton
+            android:id="@+id/mine"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:button="@null"
+            android:drawableTop="@drawable/bt_self_selector"
+            android:gravity="center"
+            android:text="@string/mine"
+            android:textColor="@color/tab_selector"/>
+    </RadioGroup>
+
+</LinearLayout>

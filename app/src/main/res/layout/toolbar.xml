@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:background="?attr/colorPrimary"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:fitsSystemWindows="true">
+
+        <SearchView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <SearchView
-                android:queryHint="More Delicious~"
-                android:background="#ecf0f1"
-                android:gravity="center_horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="35dp">
-            </SearchView>
-        </android.support.v7.widget.Toolbar>
+            android:layout_height="35dp"
+            android:background="#ecf0f1"
+            android:gravity="center_horizontal"
+            android:queryHint="More Delicious~">
+        </SearchView>
+    </android.support.v7.widget.Toolbar>
 
 </LinearLayout>

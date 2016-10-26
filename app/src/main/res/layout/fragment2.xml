@@ -1,8 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-<include layout="@layout/toolbar"/>
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+    <include layout="@layout/toolbar"/>
 
     <TextView
         android:id="@+id/text"
@@ -12,4 +13,4 @@
         android:text="我是第2个Fragment"
         android:textSize="20dp"
         />
-     </RelativeLayout>
+</RelativeLayout>

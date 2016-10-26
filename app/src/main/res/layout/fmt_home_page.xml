@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/both_match_style">
+<com.example.jessica0906zjj.mycookassistant.view.HomePageView
+    android:id="@+id/home_page_view"
+    style="@style/both_match_style">
+    </com.example.jessica0906zjj.mycookassistant.view.HomePageView>
+
+
+</LinearLayout>
