@@ -51,43 +51,5 @@ public class CookBookActivity extends BaseActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    /*
 
-        // 实例化tabhost
-        fragmentTabHost = (FragmentTabHost) findViewById(R.id.tabhost);
-        fragmentTabHost.setup(this, getSupportFragmentManager(),
-                R.id.maincontent);
-
-        for (int i = 0; i < texts.length; i++) {
-            TabSpec spec = fragmentTabHost.newTabSpec(texts[i]).setIndicator(getView(i));
-            fragmentTabHost.addTab(spec, fragmentArray[i], null);
-
-        }
-    }
-
-    private View getView(int i) {
-        //取得布局实例
-        View view = View.inflate(CookBookActivity.this, R.layout.tabcontent, null);
-
-        //取得布局对象
-        ImageView imageView = (ImageView) view.findViewById(R.id.image);
-        textView = (TextView) view.findViewById(R.id.text);
-
-        //设置图标
-        imageView.setImageResource(imageButton[i]);
-        //设置标题
-        textView.setText(texts[i]);
-        //textView.setTextColor(Color.RED);
-        return view;
-    }
-        @Override
-    public void onBackPressed() {
-            // close the navigation system Drawer pressed button "back" if it was open
-            if (drawerResult.isDrawerOpen()) {
-                drawerResult.closeDrawer();
-            } else {
-                super.onBackPressed();
-            }
-        }
-        */
 }

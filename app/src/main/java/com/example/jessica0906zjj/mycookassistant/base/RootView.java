@@ -65,4 +65,6 @@ public abstract class RootView<T extends BasePresenter> extends LinearLayout {
         unbinder.unbind();
         mContext = null;
     }
+
+
 }

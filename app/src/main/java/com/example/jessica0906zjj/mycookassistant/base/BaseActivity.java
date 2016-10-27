@@ -10,7 +10,6 @@ import com.orhanobut.logger.Logger;
 
 import butterknife.Unbinder;
 import me.yokeyword.fragmentation.SupportActivity;
-import sihuan.com.mycookassistant.R;
 
 /**
  * Created by Jessica0906zjj on 2016-10-25.
@@ -23,7 +22,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends SupportActiv
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cook_book);
+        //setContentView(R.layout.activity_cook_book);
         inint();
     }
 

@@ -95,7 +95,7 @@ public class CookBookView extends RootView<CookBookContract.Presenter> implement
     protected void initView() {
         mActivity = (CookBookActivity) mContext;
         List<Fragment> fragments = initFragments();
-        vpContent.setScrollable(false);
+        vpContent.setScrollable(true);//控制view pager滑动
         mPagerAdapter = new ContentPagerAdapter(mActivity.getSupportFragmentManager(), fragments);
         vpContent.setAdapter(mPagerAdapter);
         vpContent.setOffscreenPageLimit(fragments.size());
@@ -163,13 +163,6 @@ public class CookBookView extends RootView<CookBookContract.Presenter> implement
         }
     }
 
-    public void myLogOut() {
-        AVUser.getCurrentUser().logOut();
-        // startActivity(new Intent(CookBookActivity.this, LoginActivity.class));
-        mActivity.startActivity(new Intent(mActivity,LoginActivity.class));
-        mActivity.finish();
-
-    }
 
     @Override
     public void initNavigationDrawer() {
@@ -220,7 +213,10 @@ public class CookBookView extends RootView<CookBookContract.Presenter> implement
                                 break;
                             case 9:
                                 //注销当前账户，返回登录界面
-                                myLogOut();
+                                AVUser.getCurrentUser().logOut();
+                                // startActivity(new Intent(CookBookActivity.this, LoginActivity.class));
+                                mActivity.startActivity(new Intent(mActivity,LoginActivity.class));
+                                mActivity.finish();
                                 break;
                         }
                     }

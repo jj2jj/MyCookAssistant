@@ -7,5 +7,6 @@ package com.example.jessica0906zjj.mycookassistant.base;
 public interface BasePresenter<T> {
     void attachView(T view);
 
+
     void detachView();
 }
