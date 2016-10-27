@@ -25,6 +25,7 @@ import com.example.jessica0906zjj.mycookassistant.activity.LoginActivity;
 import com.example.jessica0906zjj.mycookassistant.activity.RegisterActivity;
 import com.example.jessica0906zjj.mycookassistant.base.RootView;
 import com.example.jessica0906zjj.mycookassistant.presenter.contract.LoginContract;
+import com.orhanobut.logger.Logger;
 
 import butterknife.BindView;
 import sihuan.com.mycookassistant.R;
@@ -100,6 +101,7 @@ public class LoginView extends RootView<LoginContract.Presenter> implements Logi
         mUsernameRegisterBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 mLoginActivity.startActivity(new Intent(mLoginActivity, RegisterActivity.class));
                 mLoginActivity.finish();
             }
